@@ -3,88 +3,72 @@
 {% block title %}LotR Quiz Home{% endblock %}
 
 {% block content %}
-    <h1 class="text-center mt-5">Test Your Memory on Lord of the Rings Trilogy</h1>
-    <div class="row text-center mt-5">
-        <div class="col-md-4">
-            <h3>Books</h3>
-            <ul>
-                <li>The Fellowship of the Ring</li>
-                <li>The Two Towers</li>
-                <li>The Return of the King</li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h3>Movies</h3>
-            <ul>
-                <li>The Fellowship of the Ring</li>
-                <li>The Two Towers</li>
-                <li>The Return of the King</li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h3>Famous Characters</h3>
-            <ul>
-                <li>Frodo</li>
-                <li>Aragorn</li>
-                <li>Gandalf</li>
-            </ul>
-        </div>
-    </div>
-
-
-      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col">
+<h1 class="text-center my-5">Do You Know Enough 'Lord of the Rings' ?</h1>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Books</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">Books<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-            </ul>
-<!--            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
-          </div>
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Books</h4>
+            </div>
+            <div class="card-body">
+<!--                <h1 class="card-title pricing-card-title">Books<small class="text-body-secondary fw-light">/mo</small>-->
+<!--                </h1>-->
+                <ul class="list-unstyled mt-3 mb-4">
+                    {% for book in books %}
+                    <li>{{ book.name }}</li>
+                    {% endfor %}
+                </ul>
+                <!--            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
+            </div>
         </div>
-      </div>
-      <div class="col">
+    </div>
+    <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">Pro</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-          </div>
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Movies</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    {% for movie in movies %}
+                    <li>{{ movie.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-          <div class="card-header py-3 text-bg-primary border-primary">
-            <h4 class="my-0 fw-normal">Enterprise</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-          </div>
-        </div>
-      </div>
     </div>
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Famous Characters</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    {% for character in characters %}
+                    <li>{{ character.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <div class="text-center mt-5">
-        <label for="characterQuote">Character Quotes</label>
-        <input type="text" id="characterQuote" placeholder="Enter Character Name" class="form-control w-50 mx-auto">
+<div class="row row-cols-1 row-cols-md-1 mb-3 text-center">
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">Character Quotes</h4>
+            </div>
+            <div class="card-body">
+              <input type="text" id="characterQuote" placeholder="Enter Character Name" class="form-control w-50 mx-auto">
+                <h1 class="card-title pricing-card-title">Books<small class="text-body-secondary fw-light">/mo</small>
+                </h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>10 users included</li>
+                </ul>
+                <!--            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
+            </div>
+        </div>
     </div>
+</div>
+
 {% endblock %}
