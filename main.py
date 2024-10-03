@@ -14,7 +14,7 @@ def index():
     lotrapi = LotrAPI()
     books_data = lotrapi.get_data("book")
     movies_data = lotrapi.get_data("movie")
-    characters_data = lotrapi.get_data1("character", 1)
+    characters_data = lotrapi.get_random_character_data("character")
     return render_template('index.html', books=books_data, movies=movies_data, characters=characters_data)
 
 
@@ -24,7 +24,7 @@ def get_book_quotes():
     lotrapi = LotrAPI()
     # Mockup logic to fetch quotes for the character (replace with actual logic)
     quotes = lotrapi.fetch_quotes_for_character(character_name)  # Implement this function
-
+    print(quotes)
     return jsonify({'quotes': quotes})
 
 

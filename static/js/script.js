@@ -1,12 +1,16 @@
 // Function to fetch quotes for a character
 function getCharacterQuotes(characterName) {
+    const quotesContainer = $('#quotesContainer'); // Get the container
+    quotesContainer.text("Loading..."); // Clear previous quotes
+
+    quotesContainer.append(`<h4>${characterName}'s Quotes'</h4>`);
     $.ajax({
         url: `/get_book_quotes`, // Your Flask route
         type: 'GET',
         data: { character: characterName }, // Send the character name as a query parameter
         success: function(response) {
             // Handle success response
-            displayQuotes(response); // Assuming response contains the quotes
+            displayQuotes(response, characterName); // Assuming response contains the quotes
         },
         error: function(xhr, status, error) {
             console.error('Error fetching quotes:', error);
@@ -15,15 +19,18 @@ function getCharacterQuotes(characterName) {
 }
 
 // Function to display the quotes in the HTML
-function displayQuotes(data) {
-    alert("hello");
+function displayQuotes(data, characterName) {
     const quotesContainer = $('#quotesContainer'); // Get the container
     quotesContainer.empty(); // Clear previous quotes
 
+    quotesContainer.append(`<h4>${characterName}'s Quotes'</h4>`);
     if (data.quotes && data.quotes.length > 0) {
         // Loop through and append each quote
+        var x = 1;
         data.quotes.forEach(function(quote) {
-            quotesContainer.append(`<p>${quote}</p>`);
+            console.log("${quote.dialog}");
+            quotesContainer.append(`<p><span>${x} &nbsp;</span>${quote.dialog}</p>`);
+            x++;
         });
     } else {
         quotesContainer.append('<p>No quotes found for this character.</p>');

@@ -1,4 +1,6 @@
 import requests
+import random
+from pprint import pprint
 
 
 class LotrAPI:
@@ -22,39 +24,49 @@ class LotrAPI:
             print(f"An error occurred: {e}")
             return None
 
-    def get_data1(self, data_type, page):
+    def get_random_character_data(self, data_type):
         url = f"{self.LOTR_API_ENDPOINT}/{data_type}"
+        offset = random.randint(1, 933)
         params = {
-            # "offset": 3,
-            "page": page
+            # "page": 2,
+            "limit": 10,
+            "offset": offset
         }
         try:
-            # response = requests.get(url=url, params=params, headers=self.headers)
-            # response.raise_for_status()
-            # data = response.json().get('docs', [])  # Get 'docs' if present
-            data = []
-            print(data)
+            response = requests.get(url=url, params=params, headers=self.headers)
+            response.raise_for_status()
+            data = response.json().get('docs', [])  # Get 'docs' if present
+            # print(response.json())
             return data
         except requests.exceptions.RequestException as e:
             print(f"An error occurred: {e}")
             return None
 
     def fetch_quotes_for_character(self, character_name):
-        characters = self.get_data("character")
-        character_id = [character['_id'] for character in characters if character_name in character['name']]
+        characters = self.get_data("character?sort=name:asc")
+        for character in characters:
+            print(character['name'])
+            # if character['name'] == "Frodo":
+            #     character_id = character['_id']
+            #     break
+        # print(pprint(characters))
+        character_id = [character['_id'] for character in characters if character_name.lower() in character['name'].lower()]
         character_id = character_id[0] if character_id else None
 
         if character_id:
-            url = f"{self.LOTR_API_ENDPOINT}//character/{character_id}/quote"
+            url = f"{self.LOTR_API_ENDPOINT}/character/{character_id}/quote"
+            offset = random.randint(1, 299)
             params = {
-                "page": 2,
-                "limit": 20
+                # "page": 2,
+                # "limit": 20
+                # "offset": offset
             }
             try:
-                response = requests.get(url=url, params=params, headers=self.headers)
+                response = requests.get(url=url, headers=self.headers)#, params=params
                 response.raise_for_status()
-                data = response.json().get('docs', [])  # Get 'docs' if present
-                print(data)
+                # print(response.json())
+                data = response.json().get('docs', [])   # Get 'docs' if present
+                # print(data)
                 return data
             except requests.exceptions.RequestException as e:
                 print(f"An error occurred: {e}")
