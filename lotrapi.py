@@ -1,15 +1,15 @@
 import requests
 import random
-from pprint import pprint
+import os
 
 
 class LotrAPI:
-    API_KEY = "giwMdZJEMM2AzGK5Rdiz"
+    LOTR_API_KEY = os.environ.get('LOTR_API_KEY')
     LOTR_API_ENDPOINT = "https://the-one-api.dev/v2"
 
     def __init__(self):
         self.headers = headers = {
-            'Authorization': f'Bearer {self.API_KEY}',
+            'Authorization': f'Bearer {self.LOTR_API_KEY}',
             'Content-Type': 'application/json'
         }
 

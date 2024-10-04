@@ -6,7 +6,7 @@ from lotrapi import LotrAPI
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "mysecretkeyoltr"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 Bootstrap5(app)
 
 @app.route('/')
