@@ -8,3 +8,20 @@ footer p {
     margin: 0;
     padding: 10px;
 }
+
+.character-details {
+    border: 1px solid #ccc;
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.character-info {
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 0;
+}
+
+.character-info li {
+    margin-bottom: 5px;
+}
+

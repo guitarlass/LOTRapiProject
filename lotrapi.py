@@ -36,7 +36,7 @@ class LotrAPI:
             response = requests.get(url=url, params=params, headers=self.headers)
             response.raise_for_status()
             data = response.json().get('docs', [])  # Get 'docs' if present
-            # print(response.json())
+            # print(data)
             return data
         except requests.exceptions.RequestException as e:
             print(f"An error occurred: {e}")
@@ -44,12 +44,6 @@ class LotrAPI:
 
     def fetch_quotes_for_character(self, character_name):
         characters = self.get_data("character?sort=name:asc")
-        for character in characters:
-            print(character['name'])
-            # if character['name'] == "Frodo":
-            #     character_id = character['_id']
-            #     break
-        # print(pprint(characters))
         character_id = [character['_id'] for character in characters if character_name.lower() in character['name'].lower()]
         character_id = character_id[0] if character_id else None
 

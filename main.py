@@ -24,7 +24,7 @@ def get_book_quotes():
     lotrapi = LotrAPI()
     # Mockup logic to fetch quotes for the character (replace with actual logic)
     quotes = lotrapi.fetch_quotes_for_character(character_name)  # Implement this function
-    print(quotes)
+    # print(quotes)
     return jsonify({'quotes': quotes})
 
 

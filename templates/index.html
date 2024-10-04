@@ -44,12 +44,26 @@
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
                     {% for character in characters %}
-                    <li>{{ character.name }}</li>
+                    <li>
+                        <a href="#" class="character-name" data-id="{{ character._id }}">{{ character.name }}</a>
+                        <div id="details-{{ character._id }}" class="character-details" style="display: none;">
+                            <ul class="character-info">
+                                <li><strong>Wiki URL:</strong> <a href="{{ character.wikiUrl }}">{{ character.wikiUrl }}</a></li>
+                                <li><strong>Race:</strong> {{ character.race }}</li>
+                                <li><strong>Birth:</strong> {{ character.birth }}</li>
+                                <li><strong>Gender:</strong> {{ character.gender }}</li>
+                                <li><strong>Death:</strong> {{ character.death }}</li>
+                                <li><strong>Hair:</strong> {{ character.hair }}</li>
+                                <li><strong>Spouse:</strong> {{ character.spouse }}</li>
+                            </ul>
+                        </div>
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
+
 </div>
 
 <div class="row row-cols-1 row-cols-md-1 mb-3 text-center">
@@ -59,7 +73,7 @@
                 <h4 class="my-0 fw-normal">Movie Quotes</h4>
             </div>
             <div class="card-body">
-              <input type="text" id="characterQuote" placeholder="Enter Character Name and press 'Enter' button" class="form-control w-50 mx-auto">
+              <input type="text" id="characterQuote" placeholder="Enter Character Name and press 'Enter' button. Eg: Samwise Gamgee" class="form-control w-50 mx-auto">
                  <div id="quotesContainer" class="mt-4"></div> <!-- Container for displaying quotes -->
 
 <!--                <h1 class="card-title pricing-card-title">Books<small class="text-body-secondary fw-light">/mo</small>-->

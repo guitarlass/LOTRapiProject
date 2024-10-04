@@ -45,4 +45,19 @@ $(document).ready(function(){
             $(this).val(''); // Clear the input field
         }
     });
+
+    // Attach a click event listener to all character names
+    $('.character-name').click(function(event) {
+        event.preventDefault();
+
+        // Get the character ID from the data-id attribute
+        var characterId = $(this).data('id');
+
+        // Find the corresponding details div and toggle slide effect
+        var detailsDiv = $('#details-' + characterId);
+
+        detailsDiv.slideToggle(); // Slide the div open/closed
+    });
+
+
 });
